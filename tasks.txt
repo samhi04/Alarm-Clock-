@@ -1,0 +1,25 @@
+task modepulse;
+begin 
+    @(posedge clk);
+	mode=1;
+	@(posedge clk);
+	mode=0;
+end 
+endtask 
+
+task incpulse;
+begin 
+    @(posedge clk);//timing control.not synthesizable 
+	inc=1;
+	@(posedge clk);
+	//#2; //not synthesizable
+	inc=0;
+end 
+endtask 
+
+task inc_and_dec_pulse;
+begin 
+    @(posedge clk);{inc,dec}=2'b11;
+	@(posedge clk);{inc,dec}=2'b00;
+end 
+endtask 

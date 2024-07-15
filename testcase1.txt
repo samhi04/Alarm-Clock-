@@ -1,0 +1,42 @@
+initial 
+   begin 
+   repeat (5) @(posedge clk);
+   #2;
+   @(posedge clk); mode=1;
+   @(posedge clk); mode=0;
+   repeat(5) @(posedge clk);
+   
+ repeat(26)
+    begin 
+	   @(posedge clk); inc =1;
+	   @(posedge clk); inc=0;
+	   repeat(5) @(posedge clk);
+	end
+
+ repeat(26)
+    begin 
+	   @(posedge clk); dec=1;
+	   @(posedge clk); dec=0;
+	   repeat(5) @(posedge clk);
+	end 
+	
+	@(posedge clk); mode=1;
+	@(posedge clk); mode=0;//MB 
+	
+	repeat(66)
+	begin 
+	   @(posedge clk); inc=1;
+	   @(posedge clk); inc=0;
+	   repeat(5) @(posedge clk);
+	end 
+	
+	repeat (5)@(posedge clk);
+	
+	#20;
+	$finish;
+end 
+
+	
+		
+	
+	

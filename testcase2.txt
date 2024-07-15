@@ -1,0 +1,21 @@
+initial 
+   begin 
+   repeat(5) @(posedge clk);
+   modepulse;
+   repeat(5) @(posedge clk);
+   
+   repeat (3) incpulse;
+   
+   `ifdef OLD 
+        inc_and_dec_pulse;
+	`endif 
+	
+	fork 
+	   incpulse; //T1
+	   decpulse; //T2
+	join 
+	
+	   repeat(5) @(posedge clk);
+	$finish;
+end 
+	
